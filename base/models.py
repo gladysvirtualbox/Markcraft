@@ -233,6 +233,35 @@ class Teacher(models.Model):
         Returns a queryset of assigned courses.
         """
         return Course.objects.filter(teacher=self)
+    
+    def average_student_mark(self):
+        """
+        Calculates the average mark of students associated with the courses taught by the teacher.
+        Returns a float representing the average mark.
+        """
+        total_marks = 0
+        total_students = 0
+        for student in self.students():
+            for mark in student.marks():
+                total_marks += mark.mark
+                total_students += 1
+        if total_students > 0:
+            return total_marks / total_students
+        else:
+            return 0.0
+        
+
+    def recent_marks(self, num=5):
+        """
+        Retrieves the most recent marks recorded for the students associated with the courses taught by the teacher.
+        Parameters:
+            - num (int): Number of recent marks to retrieve (default is 5).
+        Returns a queryset of recent marks.
+        """
+        recent_marks = []
+        for student in self.students():
+            recent_marks.extend(student.marks().order_by('-recorded_at')[:num])
+        return recent_marks
 
 class Mark(models.Model):
     """
