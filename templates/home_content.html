@@ -3,13 +3,7 @@
 
 {% block content %}
     <div class="container mt-5">
-        {% if request.user.is_authenticated %}
-            <p>{{ request.user.username }}</p>
-            {% comment %} <!-- <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a> --> {% endcomment %}
-        {% else %}
-            <a href="{% url 'login' %}" class="btn btn-primary mr-2">Login</a>
-            <a href="{% url 'signup' %}" class="btn btn-secondary">Signup</a>
-        {% endif %}
+        
         <h1 class="mt-4">School Dashboard</h1>
 
         <div class="row mt-4">
@@ -32,7 +26,7 @@
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Overall Statistics</h5>
+                        <h5 class="card-title">Mark Statistics</h5>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Average Mark: {{ average_mark }}</li>
                             <li class="list-group-item">Highest Mark: {{ highest_mark }}</li>

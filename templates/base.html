@@ -54,7 +54,13 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar bg-primary">
-        
+        {% if request.user.is_authenticated %}
+            <p class="p-12">{{ request.user.username }}</p>
+            {% comment %} <!-- <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a> --> {% endcomment %}
+        {% else %}
+            {% comment %} <a href="{% url 'login' %}" class="btn btn-primary mr-2">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-secondary">Signup</a> {% endcomment %}
+        {% endif %}
         <div class="collapse navbar-collapse" id="sidebarNav">
             <ul class="navbar-nav flex-column mt-3">
                 <li class="nav-item">
@@ -97,10 +103,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
+            <ul class="navbar-nav ml-auto">   
                 <li class="nav-item">
                     <a class="nav-link" href="#">Dashboard</a>
                 </li>
