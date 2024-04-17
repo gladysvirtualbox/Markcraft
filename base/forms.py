@@ -10,3 +10,7 @@ class SignupForm(UserCreationForm):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class MarkUploadForm(forms.Form):
+    file = forms.FileField(label='Upload File', help_text='Upload file containing student marks')

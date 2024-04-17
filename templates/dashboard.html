@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Dashboard</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Total Counts</h2>
+        <p>Total Students: {{ total_students }}</p>
+        <p>Total Marks: {{ total_marks }}</p>
+      </div>
+      <div class="col-md-6">
+        <h2>Overall Statistics</h2>
+        <p>Average Mark: {{ average_mark }}</p>
+        <p>Highest Mark: {{ highest_mark }}</p>
+        <p>Lowest Mark: {{ lowest_mark }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Top Performing Students</h2>
+        <h4>By Average Mark</h4>
+        <ul>
+          {% for student in top_students_by_average %}
+            <li>{{ student.name }} (Average Mark: {{ student.average_mark }})</li>
+          {% endfor %}
+        </ul>
+        <h4>By Highest Mark</h4>
+        <ul>
+          {% for student in top_students_by_highest_mark %}
+            <li>{{ student.name }} (Highest Mark: {{ student.highest_mark }})</li>
+          {% endfor %}
+        </ul>
+        <h4>By Lowest Mark</h4>
+        <ul>
+          {% for student in top_students_by_lowest_mark %}
+            <li>{{ student.name }} (Lowest Mark: {{ student.lowest_mark }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h2>Recent Activity</h2>
+        <h4>Recent Students</h4>
+        <ul>
+          {% for student in recent_students %}
+            <li>{{ student.name }} (Created At: {{ student.created_at }})</li>
+          {% endfor %}
+        </ul>
+        <h4>Recent Marks</h4>
+        <ul>
+          {% for mark in recent_marks %}
+            <li>Student: {{ mark.student.name }} (Mark: {{ mark.mark }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

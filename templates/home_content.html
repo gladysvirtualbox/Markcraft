@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        .dashboard-block {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        {% if request.user.is_authenticated %}
+            <p>{{ request.user.username }}</p>
+            {% comment %} <!-- <a href="{% url 'logout' %}">Logout</a> --> {% endcomment %}
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary mr-2">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-secondary">Signup</a>
+        {% endif %}
+        <h1 class="mt-4">School Dashboard</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h2>Total Students</h2>
+                    <p>{{ total_students }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h2>Total Marks Entered</h2>
+                    <p>{{ total_marks }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h2>Overall Statistics</h2>
+                    <ul>
+                        <li>Average Mark: {{ average_mark }}</li>
+                        <li>Highest Mark: {{ highest_mark }}</li>
+                        <li>Lowest Mark: {{ lowest_mark }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h2>Top Performing Students</h2>
+                    <h3>By Average Mark</h3>
+                    <ul>
+                        {% for student in top_students_by_average %}
+                            <li>{{ student.last_name }}, {{ student.first_name }} (Average: {{ student.average_mark }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h3>By Highest Mark</h3>
+                    <ul>
+                        {% for student in top_students_by_highest_mark %}
+                            <li>{{ student.last_name }}, {{ student.first_name }} (Highest: {{ student.highest_mark }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-block">
+                    <h3>By Lowest Mark</h3>
+                    <ul>
+                        {% for student in top_students_by_lowest_mark %}
+                            <li>{{ student.last_name }}, {{ student.first_name }} (Lowest: {{ student.lowest_mark }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-block">
+            <h2>Recent Activity</h2>
+            <!-- Add content for recent activity here -->
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

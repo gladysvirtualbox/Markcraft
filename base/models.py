@@ -6,7 +6,6 @@ class AddressZW(models.Model):
     """
     Represents a Zimbabwean address.
     """
-    name = models.CharField(max_length=400, null=True, blank=True, help_text="Name of the address (optional).")
     address_line_1 = models.CharField(max_length=255, help_text="First line of the address.")
     address_line_2 = models.CharField(max_length=255, blank=True, help_text="Second line of the address (optional).")
     city = models.CharField(max_length=100, help_text="City of the address.")
@@ -270,10 +269,9 @@ class Mark(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, help_text="Student associated with the mark.")
     course = models.ForeignKey(Course, on_delete=models.CASCADE, help_text="Course associated with the mark.")
     mark = models.DecimalField(max_digits=5, decimal_places=2, help_text="Mark recorded for the student.")
-    recorded_by = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True,
-                                    help_text="Teacher who recorded the mark.")
     recorded_at = models.DateTimeField(auto_now_add=True, help_text="Date and time when the mark was recorded.")
-
+    file_upload = models.FileField(upload_to='uploads/%Y/%m/%d/', help_text="Upload file with student marks.", null=True)
+    
     def __str__(self):
         """
         Returns a string representation of the mark.

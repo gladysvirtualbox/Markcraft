@@ -43,6 +43,7 @@ INSTALLED_APPS = [
    
 
     'base.apps.BaseConfig',
+    'accounts'
 ]
 
 MIDDLEWARE = [

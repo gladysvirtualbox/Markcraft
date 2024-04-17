@@ -3,8 +3,8 @@ from .models import AddressZW, Stream, Course, Program, Student, Teacher, Mark
 
 
 class AddressZWAdmin(admin.ModelAdmin):
-    list_display = ['name', 'address_line_1', 'city', 'province', 'postal_code']
-    search_fields = ['name', 'address_line_1', 'city', 'province', 'postal_code']
+    list_display = ['address_line_1', 'city', 'province', 'postal_code']
+    search_fields = ['address_line_1', 'city', 'province', 'postal_code']
 
 class StreamAdmin(admin.ModelAdmin):
     list_display = ['name', 'start_date', 'end_date', 'is_active']
@@ -33,8 +33,8 @@ class TeacherAdmin(admin.ModelAdmin):
     search_fields = ['user__first_name', 'user__last_name', 'national_id', 'phone_number']
 
 class MarkAdmin(admin.ModelAdmin):
-    list_display = ['student', 'course', 'mark', 'recorded_by', 'recorded_at']
-    list_filter = ['course', 'recorded_by']
+    list_display = ['student', 'course', 'mark', 'recorded_at']
+    list_filter = ['course',]
     search_fields = ['student__first_name', 'student__last_name']
 
 # Register your models with the custom admin classes
@@ -45,3 +45,4 @@ admin.site.register(Program, ProgramAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Mark, MarkAdmin)
+
