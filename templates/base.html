@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}School Dashboard{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
     <style>
-        /* Custom CSS styles */
+        /* Custom CSS for material design */
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             height: 100%;
             width: 250px;
-            background-color: #343a40;
-            padding-top: 56px; /* Height of navbar */
+            background-color: #37474F; /* Material Blue Grey 800 */
             color: #fff;
+            padding-top: 56px; /* Height of navbar */
         }
 
         .footer {
@@ -23,7 +34,7 @@
             bottom: 0;
             width: 100%;
             height: 60px;
-            background-color: #343a40;
+            background-color: #37474F; /* Material Blue Grey 800 */
             color: #fff;
             line-height: 60px;
             text-align: center;
@@ -33,22 +44,71 @@
             margin-left: 250px; /* Width of sidebar */
             padding: 20px;
         }
+
+        .navbar {
+            background-color: #1976D2; /* Material Blue 700 */
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">School Dashboard</a>
-        </nav>
-        <!-- Add sidebar content here -->
-    </div>
+    <div class="sidebar bg-primary">
+        
+        <div class="collapse navbar-collapse" id="sidebarNav">
+            <ul class="navbar-nav flex-column mt-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">home</i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">dashboard</i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">event</i> Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">people</i> Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">person</i> Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons mr-2">settings</i> Settings</a>
+                </li>
+                <!-- Add more sidebar items as needed -->
+            </ul>
+            <div class="sidebar-widgets mt-4">
+                <h5 class="text-white">Useful Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Student Handbook</a></li>
+                    <li><a href="#">Parent Portal</a></li>
+                    <li><a href="#">Staff Directory</a></li>
+                ul>
+              </div>
+          </div>
+      </div>
+
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">School Dashboard</a>
-        <!-- Add navbar links and toggler button here -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="brand-logo" href="#"><i class="material-icons">school</i> School Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
     </nav>
+
 
     <!-- Content Wrapper -->
     <div class="content-wrapper">
